@@ -3,7 +3,6 @@ name: Build and publish
 on: [workflow_dispatch]
 
 permissions:
-  id-token: write # Require write permission to Fetch an OIDC token.
   contents: read  # This is required for actions/checkout
 
 env:
@@ -51,8 +50,7 @@ jobs:
         path: .net-app
 
     #Login in your azure subscription using OpenID Connect (credentials stored as GitHub secrets in repo)
-    - name: Azure Login
-      uses: azure/login@v2
+    - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
